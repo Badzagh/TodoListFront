@@ -22,7 +22,7 @@ function App() {
   const makeRequest = (Page) => {
     axios({
       method: 'get',
-      url: `http://localhost:3000/items/choose?page=${Page}`,
+      url: `https://localhost:3000/items/choose?page=${Page}`,
       headers: {
           "Content-Type": "application/json"
         }
@@ -56,7 +56,7 @@ function App() {
     setTimeout(() => {
       axios({
         method: 'get',
-        url: `http://localhost:3000/items`,
+        url: `https://localhost:3000/items`,
         headers: {
             "Content-Type": "application/json"
         }
@@ -95,7 +95,7 @@ function App() {
 
       axios({
         method: 'post',
-        url: 'http://localhost:3000/items/add',
+        url: 'https://localhost:3000/items/add',
         responseType: 'json',
         headers: {
             'Accept': 'application/json',
@@ -136,7 +136,7 @@ function App() {
     //  put request
     axios({
       method: 'put',
-      url: `http://localhost:3000/items/change/${itemId}`,
+      url: `https://localhost:3000/items/change/${itemId}`,
       responseType: 'json',
       data : {
           name: editItemName
@@ -157,7 +157,7 @@ function App() {
   //Delete
   const handleClickDelete = (e) => {
 
-    axios.delete(`http://localhost:3000/items/delete/${e.target.value}`, {
+    axios.delete(`https://localhost:3000/items/delete/${e.target.value}`, {
       body: e.target.value
     })
     .then((res) => {
@@ -169,7 +169,7 @@ function App() {
   const checkTaskReq = (check, itemId) => {
     axios({
         method: 'put',
-        url: `http://localhost:3000/items/change/${itemId}`,
+        url: `https://localhost:3000/items/change/${itemId}`,
         responseType: 'json',
         data : {
             checkTask: check
