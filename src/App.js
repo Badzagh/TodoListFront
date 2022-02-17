@@ -21,6 +21,8 @@ function App() {
   const [itemId, setItemId] = useState("");
   const [page, setPage] = useState(1)
   const [taskComplete, setTaskComplete] = useState([false, false, false, false, false])
+  const [txtEditButton, setTxtEditButton] = useState("Edit")
+  const [txtDeleteButton, setTxtDeleteButton] = useState("Delete")
 
   //make get request
   const makeRequest = (Page) => {
@@ -134,54 +136,64 @@ function App() {
     }
   }
 
-  //Edit
-  const handleClickEdit = (e) => {
+  //Edit/Save
+  const handleClickEditSave = (e) => {
+
     setItemId(e.target.value);
+
     items.forEach((item, index) => {
       if(item._id === e.target.value){
         setEditItemName(item.name);
         setVisibilityEditInputContainer("input-edit-container-" + index);
       }
     })
+
+    setTxtEditButton("Save");
+    setTxtDeleteButton("Cancel");
+
+    if(e.target.name === "Save"){
+
+      setVisibilityEditInputContainer("input-edit-container-hidden");
+      setTxtEditButton("Edit");
+      setTxtDeleteButton("Delete");
+
+      //  put request
+      axios({
+        method: 'put',
+        url: `https://new-website-todo.herokuapp.com/items/change/${itemId}`,
+        responseType: 'json',
+        data : {
+            name: editItemName
+        },
+      })
+      .then(() =>  {
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+      }
   }
 
   const handleInputEditChange = (e) => {
     setEditItemName(e.target.value);
   }
 
-  const handleClickEditSave = (e) => {
-
-    setVisibilityEditInputContainer("input-edit-container-hidden");
-    //  put request
-    axios({
-      method: 'put',
-      url: `https://new-website-todo.herokuapp.com/items/change/${itemId}`,
-      responseType: 'json',
-      data : {
-          name: editItemName
-      },
-    })
-    .then(() =>  {
-      window.location.reload();
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  }
-
-  const handleClickEditCancel = (e) => {
-    setVisibilityEditInputContainer("input-edit-container-hidden")
-  }
-
-  //Delete
-  const handleClickDelete = (e) => {
-
-    axios.delete(`https://new-website-todo.herokuapp.com/items/delete/${e.target.value}`, {
-      body: e.target.value
-    })
-    .then(() => {
-      window.location.reload();
-    })
+  //Delete/Cancel
+  const handleClickDeleteCancel = (e) => {
+    if(e.target.name === "Delete"){
+      axios.delete(`https://new-website-todo.herokuapp.com/items/delete/${e.target.value}`, {
+        body: e.target.value
+      })
+      .then(() => {
+        window.location.reload();
+      })
+    } else {
+    
+      setVisibilityEditInputContainer("input-edit-container-hidden")
+      setTxtEditButton("Edit");
+      setTxtDeleteButton("Delete");
+    }
   }
 
   //check task
@@ -280,15 +292,13 @@ function App() {
                   label={item.name} 
                 />
                 <Box>
-                  <Button onClick={handleClickEdit} value={item._id} className="edit-btn">Edit</Button>
-                  <Button onClick={handleClickDelete} value={item._id} className="delete-btn">Delete</Button>
+                  <Button onClick={handleClickEditSave} value={item._id} className="edit-btn" name={txtEditButton} >{txtEditButton}</Button>
+                  <Button onClick={handleClickDeleteCancel} value={item._id} className="delete-btn" name={txtDeleteButton} >{txtDeleteButton}</Button>
                 </Box>
               </Box>
             ))}
             <Box className={visibilityEditInputContainer} >
               <Input style={{backgroundColor: "#F9F7F7"}} onChange={e => handleInputEditChange(e)} value={editItemName} className="input-edit"/>
-              <Button onClick={handleClickEditSave} className="save-btn">Save</Button>
-              <Button onClick={handleClickEditCancel} className="cancel-btn">Cancel</Button>
             </Box>
           </Container>
           <Stack spacing={2} mt={5} ml={"auto"} mr={"auto"} width={"267px"}>

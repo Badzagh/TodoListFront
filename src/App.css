@@ -49,7 +49,7 @@ span {
   visibility: visible;
   opacity: 1;
   position: absolute;
-  width: 428px;
+  width: 10vh;
   height: 22px;
   margin-left: 60px;
   top: 300px;
@@ -60,7 +60,7 @@ span {
   opacity: 1;
   position: absolute;
   top: 340px;
-  width: 428px;
+  width: 10vh;
   height: 22px;
   margin-left: 60px;
   background-color: #F9F7F7;
@@ -70,7 +70,7 @@ span {
   opacity: 1;
   position: absolute;
   top: 383px;
-  width: 428px;
+  width: 10vh;
   height: 22px;
   margin-left: 60px;
   background-color: #F9F7F7;
@@ -80,7 +80,7 @@ span {
   opacity: 1;
   position: absolute;
   top: 425px;
-  width: 428px;
+  width: 10vh;
   height: 22px;
   margin-left: 60px;
   background-color: #F9F7F7;
@@ -90,7 +90,7 @@ span {
   opacity: 1;
   position: absolute;
   top: 468px;
-  width: 428px;
+  width: 10vh;
   height: 22px;
   margin-left: 60px;
   background-color: #F9F7F7;
@@ -98,7 +98,6 @@ span {
 .input-edit {
   position: absolute;
   z-index: 1;
-  width: 300px;
 }
 .delete-btn {
   cursor: pointer;
