@@ -247,7 +247,7 @@ function App() {
                     marginRight: "auto",
                     paddingTop: "150px"
                   }}> 
-            <Box minWidth={"297px"}>                                   
+            <Box minWidth={"297px"} className="input-add-container" >                                   
               <TextField 
                 required size="small" 
                 id="outlined-basic" 

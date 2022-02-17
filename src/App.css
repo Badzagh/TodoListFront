@@ -14,8 +14,11 @@
 span {
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 140px;
   height: 20px;
+}
+.input-add-container {
+  display: flex;
+  flex-wrap: nowrap;
 }
 .list-container {
   max-width: 600px;
@@ -51,7 +54,7 @@ span {
   position: absolute;
   width: 10vh;
   height: 22px;
-  margin-left: 60px;
+  margin-left: 30px;
   top: 300px;
   background-color: #F9F7F7;
 }
@@ -62,7 +65,7 @@ span {
   top: 340px;
   width: 10vh;
   height: 22px;
-  margin-left: 60px;
+  margin-left: 30px;
   background-color: #F9F7F7;
 }
 .input-edit-container-2 {
@@ -72,7 +75,7 @@ span {
   top: 383px;
   width: 10vh;
   height: 22px;
-  margin-left: 60px;
+  margin-left: 30px;
   background-color: #F9F7F7;
 }
 .input-edit-container-3 {
@@ -82,7 +85,7 @@ span {
   top: 425px;
   width: 10vh;
   height: 22px;
-  margin-left: 60px;
+  margin-left: 30px;
   background-color: #F9F7F7;
 }
 .input-edit-container-4 {
@@ -92,7 +95,7 @@ span {
   top: 468px;
   width: 10vh;
   height: 22px;
-  margin-left: 60px;
+  margin-left: 30px;
   background-color: #F9F7F7;
 }
 .input-edit {
